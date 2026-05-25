@@ -44,24 +44,26 @@ const upload = multer({
 // @desc    Upload an image
 // @route   POST /api/v1/upload
 // @access  Private (Admin can be added, but simple for now)
-router.post('/', upload.single('image'), (req, res) => {
-    try {
+router.post('/', (req, res) => {
+    upload.single('image')(req, res, (err) => {
+        if (err) {
+            return res.status(400).json({ success: false, message: err.message || err });
+        }
+
         if (!req.file) {
             return res.status(400).json({ success: false, message: 'No file uploaded' });
         }
-        
+
         // Return the accessible URL
         // Example: /uploads/image-123456.jpg
         const fileUrl = `/uploads/${req.file.filename}`;
-        
+
         res.status(200).json({
             success: true,
             data: fileUrl,
             message: 'Image uploaded'
         });
-    } catch (err) {
-        res.status(500).json({ success: false, message: err.message });
-    }
+    });
 });
 
 module.exports = router;

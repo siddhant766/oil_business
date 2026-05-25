@@ -1,5 +1,17 @@
 const Product = require('../models/Product');
 
+// @desc    Get all products for admin (all statuses)
+// @route   GET /api/v1/products/admin/all
+// @access  Private (Admin)
+exports.getAllProductsAdmin = async (req, res) => {
+    try {
+        const products = await Product.find({ isDeleted: false }).populate('category', 'name').sort({ createdAt: -1 });
+        res.status(200).json({ success: true, count: products.length, data: products });
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
+    };
+};
+
 // @desc    Get all products (public)
 // @route   GET /api/v1/products
 // @access  Public

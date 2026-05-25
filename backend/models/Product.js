@@ -108,11 +108,11 @@ const ProductSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Auto-generate slug from name if not provided
-ProductSchema.pre('save', function(next) {
+// Note: Mongoose 9.x does not use next() callbacks in hooks
+ProductSchema.pre('save', function() {
     if (!this.slug && this.name) {
         this.slug = this.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     }
-    next();
 });
 
 module.exports = mongoose.model('Product', ProductSchema);
