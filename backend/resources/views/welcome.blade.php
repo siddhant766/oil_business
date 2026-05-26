@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="India's leading B2B & B2C edible oil distribution platform. Premium mustard oil, refined soybean oil, and bulk edible oils with wholesale pricing." />
+    <meta name="keywords" content="edible oil wholesale, mustard oil distributor, bulk cooking oil, B2B oil supply, premium oils India" />
+    <meta property="og:title" content="Premium Oils — India's Trusted Edible Oil Supply Network" />
+    <meta property="og:description" content="From households to large-scale industrial procurement. Scalable oil distribution built for modern businesses." />
+    <meta property="og:type" content="website" />
+    
+    <!-- Preconnect and Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <title>Premium Oils — India's Trusted Edible Oil Supply Network</title>
+    
+    <!-- Vite React Refresh & Assets -->
+    @viteReactRefresh
+    @vite(['resources/css/app.css', 'resources/js/app.jsx'])
+  </head>
+  <body class="bg-gray-50 text-gray-900 min-h-screen">
+    <div id="root"></div>
+  </body>
+</html>
